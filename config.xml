@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.juris989624" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.fabiovazquez.juris" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>juris</name>
   <description>
-        An Ionic Framework and Cordova project.
+        App to help Brazilian law students to prepare for the OAB test.
     </description>
-  <author email="you@example.com" href="http://example.com.com/">
-      Your Name Here
+  <author email="fabiovazquez@outlook.com" href="http://www.fabiovazquez.com/">
+      Fabio Vazquez
     </author>
   <content src="index.html"/>
   <access origin="*"/>

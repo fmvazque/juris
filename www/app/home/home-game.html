@@ -1,0 +1,26 @@
+<ion-view ng-controller="gameController">
+	<ion-content class="has-header">
+
+		<div class="item" ng-bind="currentQuestion.text"></div>
+
+		<ion-list radio-group>
+			<ion-item>
+				<ion-radio 
+					ng-repeat="n in currentQuestion.alternatives" 
+					ng-value="n"
+					ng-model="selectedOption.value">
+					{{n}}					
+				</ion-radio>
+			</ion-item>
+		</ion-list>
+
+		<button type="button" ng-click="goToNextQuestion()">Estou certo(a) disso!</button>
+
+		<div>
+			<span>Errar:</span><span ng-bind="scoreIfWrong"></span>
+			<span>Parar:</span><span ng-bind="currentScore"></span>
+			<span>Acertar:</span><span ng-bind="scoreIfRight"></span>
+		</div>
+
+	</ion-content>
+</ion-view>
