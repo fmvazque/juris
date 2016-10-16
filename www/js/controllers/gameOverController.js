@@ -11,9 +11,6 @@
 			gameApi.newGame();
 			
 			$state.go('home.game');
-
-			// TODO: verify if we can control this using the controller only
-			//$window.location.reload();
 		}
 	}
 })();

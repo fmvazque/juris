@@ -8,13 +8,12 @@
 				<ion-radio 
 					ng-repeat="n in currentQuestion.alternatives" 
 					ng-value="n"
-					ng-model="selectedOption.value">
+					ng-model="selectedOption.value"
+ 					ng-click="showConfirm()">
 					{{n}}					
 				</ion-radio>
 			</ion-item>
 		</ion-list>
-
-		<button type="button" ng-click="goToNextQuestion()">Estou certo(a) disso!</button>
 
 		<div>
 			<span>Errar:</span><span ng-bind="scoreIfWrong"></span>

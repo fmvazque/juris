@@ -2,11 +2,11 @@
 	'use strict';
 
 	var app = angular.module('jurisApp');
-	app.controller('gameController', ['gameApi', '$scope', '$state', gameController]);
+	app.controller('gameController', ['gameApi', '$scope', '$state', '$ionicPopup', gameController]);
 
-	function gameController(gameApi, $scope, $state) {
+	function gameController(gameApi, $scope, $state, $ionicPopup) {
 
-		// this is goint to execute every time view the is opened
+		// this is going to execute every time the view is opened
 		$scope.$on('$ionicView.enter', function() {
 			startGameController();
 		});
@@ -48,5 +48,21 @@
 			$scope.scoreIfWrong = gameApi.getScoreIfWrong();
 			$scope.currentScore = gameApi.getCurrentScore();			
 		};
+
+		// Confirmation dialog
+		$scope.showConfirm = function() {
+			var confirmPopup = $ionicPopup.confirm({
+				title: 'Tem certeza?',
+				template: 'Você está certo(a) disso?',
+				okText: 'Sim',
+				cancelText: 'Não'
+			});
+
+			confirmPopup.then(function(response) {
+				if (response) {
+					$scope.goToNextQuestion();
+				}
+			});
+		};		
 	}
 })();
