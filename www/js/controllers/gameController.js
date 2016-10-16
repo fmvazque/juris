@@ -14,39 +14,42 @@
 		$scope.goToNextQuestion = function() {
 			console.log('gameController::goToNextQuestion called');
 			
-			if (!gameApi.gotRightAnswer($scope.selectedOption.value)) {
-				console.log('selectedOption: ' + $scope.selectedOption.value);
-				return;
+			var gameStatus = gameApi.advance($scope.selectedOption.value);
+
+			if (gameStatus.hasWinner) {
+				console.log('game has winner')
+				// User won!!!
+				$state.go('home.gameover');
 			}
-
-			if (gameApi.hasNextQuestion()) {
-				$scope.currentQuestion = gameApi.getNextQuestion();
-				$scope.scoreIfRight = gameApi.getScoreIfRight(); 
-				$scope.scoreIfWrong = gameApi.getScoreIfWrong(); 
-				$scope.currentScore = gameApi.getCurrentScore(); 
-
-				console.log("new desired score from controler: " + $scope.scoreIfRight);
-
-				$state.go($state.current);
+			else if (gameStatus.isGameOver) {
+				console.log('game is over')
+				// User stopped in the middle of the game
+				$state.go('home.gameover');
 			}
 			else {
-				console.log('transitioning to home.gameover state');
-				$state.go('home.gameover');
+				console.log('game continues')
+				// We still have more game ahead
+				$scope.scoreIfRight = gameStatus.scoreIfRight; 
+				$scope.scoreIfWrong = gameStatus.scoreIfWrong; 
+				$scope.currentScore = gameStatus.currentScore; 
+
+				//$state.go($state.current);
+				$state.go('home.gametransition');
 			}
 		};
 
 		function startGameController() {
-			console.log('initializing gameController');
-			
-			$scope.currentQuestion = gameApi.getNextQuestion();
+			var gameStatus = gameApi.getCurrentStatus();
+
+			$scope.currentQuestion = gameStatus.currentQuestion;
 
 			$scope.selectedOption = {
 				value: "-1"
 			};
 
-			$scope.scoreIfRight = gameApi.getScoreIfRight();
-			$scope.scoreIfWrong = gameApi.getScoreIfWrong();
-			$scope.currentScore = gameApi.getCurrentScore();			
+			$scope.scoreIfRight = gameStatus.scoreIfRight;
+			$scope.scoreIfWrong = gameStatus.scoreIfWrong;
+			$scope.currentScore = gameStatus.currentScore;			
 		};
 
 		// Confirmation dialog
@@ -61,6 +64,8 @@
 			confirmPopup.then(function(response) {
 				if (response) {
 					$scope.goToNextQuestion();
+					//$state.go('home.gametransition');
+					//$scope.goToNextQuestion();
 				}
 			});
 		};		

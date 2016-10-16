@@ -1,8 +1,11 @@
 <ion-view title="gameover_view">
 	<ion-content class="has-header">
 
-		<div class="list">
+		<div class="list" ng-if="!hasWonGame()">
 			Game Over!!!
+		</div>
+		<div class="list" ng-if="hasWonGame()">
+			Você Ganhou!!!
 		</div>
 
 		<button ng-click="startOver()">Novo jogo</button>

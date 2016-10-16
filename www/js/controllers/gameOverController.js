@@ -9,8 +9,11 @@
 
 		$scope.startOver = function() {
 			gameApi.newGame();
-			
 			$state.go('home.game');
+		}
+
+		$scope.hasWonGame = function() {
+			return gameApi.getCurrentStatus().hasWinner;
 		}
 	}
 })();

@@ -39,6 +39,16 @@ angular.module('jurisApp', ['ionic'])
 			}
 		});
 
+		$stateProvider.state('home.gametransition', {
+			url: '/gametransition',
+			views: {
+				"home-view": {
+					templateUrl: "app/home/home-gameTransition.html",
+					controller: 'gameTransitionController'
+				}
+			}
+		});
+
 		$stateProvider.state('home.gameover', {
 			url: '/gameover',
 			views: {

@@ -4,10 +4,11 @@
 	angular.module('jurisApp').factory('gameApi', [gameApi]);
 
 	function gameApi() {
-		var currentQuestionIndex = -1;
+		var currentQuestionIndex = 0;
 		var currentScore = 0;
 		var scoreIfRight = 1000;
 		var scoreIfWrong = 0;
+		var isGameOver = false;
 
 		var gameData = {
 			gameLevel: 1,
@@ -34,44 +35,44 @@
 		}
 
 		function hasNextQuestion() {
-			return currentQuestionIndex < gameData.questions.length-1;
+			return currentQuestionIndex <= gameData.questions.length-1;
 		}
 
-		function getNextQuestion() {
-			console.log("getNestQuestion: " + currentQuestionIndex);
-			return gameData.questions[++currentQuestionIndex];
+		// Advance game
+		function advance(userAnswer) {
+			console.log('advancing game');
+
+			var currentQuestion = gameData.questions[currentQuestionIndex];
+
+			if (currentQuestion && userAnswer === currentQuestion.alternatives[currentQuestion.correctAnswerIndex]) {
+				currentQuestionIndex++;
+				recalculateScores();
+			}
+			else {
+				isGameOver = currentQuestionIndex >= 0;
+			}
+
+			return getCurrentStatus();
 		}
 
 		function newGame() {
 			console.log('new game');
 			
 			// If there was a previous game, saves it's information on the user's performance data
-			if (currentQuestionIndex > -1) {
+			if (currentQuestionIndex > 0) {
 				var gamePlayed = {
 					score: currentScore
 				};
 				gameHistory.gamesPayed.push(gamePlayed);
 			}
 
-			currentQuestionIndex = -1;
+			isGameOver = false;
+			currentQuestionIndex = 0;
 			currentScore = 0;
 			scoreIfRight = 1000;
 			scoreIfWrong = 0;
 
 			console.log('currentQuestionIndex: ' + currentQuestionIndex);
-		}
-
-		function gotRightAnswer(userAnswer) {
-			var currentQuestion = gameData.questions[currentQuestionIndex];
-
-			if (currentQuestion && userAnswer === currentQuestion.alternatives[currentQuestion.correctAnswerIndex]) {
-				console.log("User's answer is correct!")
-				recalculateScores();
-				console.log("new desired score: " + scoreIfRight);
-				return true;
-			}
-
-			return false;
 		}
 
 		function recalculateScores() {
@@ -80,26 +81,21 @@
 			scoreIfWrong = currentScore / 2;
 		}
 
-		function getScoreIfRight() {
-			return scoreIfRight;
-		}
-
-		function getScoreIfWrong() {
-			return scoreIfWrong;
-		}
-
-		function getCurrentScore() {
-			return currentScore;
+		function getCurrentStatus() {
+			return {
+				isGameOver: isGameOver,
+				hasWinner: !hasNextQuestion(),
+				currentQuestion: gameData.questions[currentQuestionIndex],
+				currentScore: currentScore,
+				scoreIfWrong: scoreIfWrong,
+				scoreIfRight: scoreIfRight
+			}
 		}
 
 		return {
 			newGame : newGame,
-			hasNextQuestion : hasNextQuestion,
-			getNextQuestion : getNextQuestion,
-			gotRightAnswer : gotRightAnswer,
-			getScoreIfRight : getScoreIfRight,
-			getScoreIfWrong : getScoreIfWrong,
-			getCurrentScore : getCurrentScore
+			advance : advance,
+			getCurrentStatus: getCurrentStatus
 		};
 	};
 })();
