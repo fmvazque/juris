@@ -32,8 +32,9 @@ angular.module('jurisApp', ['ionic'])
 		$stateProvider.state('home.game', {
 			url: '/game',
 			views: {
-				"home-game": {
-					templateUrl: "app/home/home-game.html"
+				"home-view": {
+					templateUrl: "app/home/home-game.html",
+					controller: 'gameController'
 				}
 			}
 		});
@@ -41,8 +42,9 @@ angular.module('jurisApp', ['ionic'])
 		$stateProvider.state('home.gameover', {
 			url: '/gameover',
 			views: {
-				"home-gameover": {
-					templateUrl: "app/home/home-gameover.html"
+				"home-view": {
+					templateUrl: "app/home/home-gameover.html",
+					controller: 'gameOverController'
 				}
 			}
 		});

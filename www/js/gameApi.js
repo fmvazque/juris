@@ -54,12 +54,17 @@
 			}
 
 			currentQuestionIndex = -1;
+			currentScore = 0;
+			scoreIfRight = 1000;
+			scoreIfWrong = 0;
+
+			console.log('currentQuestionIndex: ' + currentQuestionIndex);
 		}
 
 		function gotRightAnswer(userAnswer) {
 			var currentQuestion = gameData.questions[currentQuestionIndex];
 
-			if (userAnswer == currentQuestion.alternatives[currentQuestion.correctAnswerIndex]) {
+			if (currentQuestion && userAnswer === currentQuestion.alternatives[currentQuestion.correctAnswerIndex]) {
 				console.log("User's answer is correct!")
 				recalculateScores();
 				console.log("new desired score: " + scoreIfRight);
