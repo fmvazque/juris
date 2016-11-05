@@ -2,15 +2,36 @@
 	<ion-content class="has-header">
 
 		<div class="list" ng-if="!hasWonGame()">
-			Game Over!!!
+			<div class="list card">
+				<div class="item item-body">
+					<a>
+						<i class="icon ion-sad"></i>
+					</a> 
+					<p>Que pena, não foi dessa vez...</p>
+					<p class="subdued">
+						Você ganhou: {{currentScore()}}
+					</p>
+				</div>
+			</div>
 		</div>
 		<div class="list" ng-if="hasWonGame()">
-			Você Ganhou!!!
+			<div class="list card">
+				<div class="item item-body">
+					<a>
+						<i class="icon ion-happy"></i>
+					</a> 
+					<p>Parabéns!!! Você ganhou o prêmio máximo!</p>
+					<p class="subdued">
+						Você ganhou: {{currentScore()}}
+					</p>
+				</div>
+			</div>
 		</div>
 
-		<button ng-click="startOver()">Novo jogo</button>
-
-		 <a class="button icon ion-chevron-left" href="#/game">
+		<button ion-button full 
+			ng-click="startOver()">
+			Jogar novamente
+		</button>
 
 	</ion-content>
 </ion-view>

@@ -16,9 +16,15 @@
 		</ion-list>
 
 		<div>
-			<span>Errar:</span><span ng-bind="scoreIfWrong"></span>
-			<span>Parar:</span><span ng-bind="currentScore"></span>
-			<span>Acertar:</span><span ng-bind="scoreIfRight"></span>
+			<button class="button button-assertive">
+  				Errar: {{scoreIfWrong}}
+			</button>
+			<button class="button button-assertive">
+  				Parar: {{currentScore}}
+			</button>
+			<button class="button button-assertive">
+  				Acertar: {{scoreIfRight}}
+			</button>
 		</div>
 
 	</ion-content>

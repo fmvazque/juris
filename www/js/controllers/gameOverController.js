@@ -15,5 +15,10 @@
 		$scope.hasWonGame = function() {
 			return gameApi.getCurrentStatus().hasWinner;
 		}
+
+		$scope.currentScore = function() {
+			return gameApi.getCurrentStatus().currentScore;
+		}
+
 	}
 })();
