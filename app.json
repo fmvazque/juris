@@ -1,0 +1,6 @@
+{
+    "name": "Juris on Heroku",
+    "description": "Juris App",
+    "repository": "https://github.com/fmvazque/juris",
+    "keywords": ["ionic"]
+}
