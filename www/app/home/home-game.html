@@ -1,30 +1,47 @@
 <ion-view title="game_view">
 	<ion-content class="has-header">
 
-		<div class="item" ng-bind="currentQuestion.text"></div>
+		<div id="question-container" class="item item-text-wrap">
+			 {{currentQuestion.text}}
+		</div>
 
 		<ion-list radio-group>
 			<ion-item>
 				<ion-radio 
+					class="item-borderless"
 					ng-repeat="n in currentQuestion.alternatives" 
 					ng-value="n"
 					ng-model="selectedOption.value"
  					ng-click="showConfirm()">
-					{{n}}					
+					<div id="answer-container">
+						<div id="answer-letter">
+							<span ng-if="$index == 0">A</span>
+							<span ng-if="$index == 1">B</span>
+							<span ng-if="$index == 2">C</span>
+							<span ng-if="$index == 3">D</span>
+						</div>
+						<div id="answer-text">{{n}}</div>
+					</div>			
 				</ion-radio>
 			</ion-item>
 		</ion-list>
 
-		<div>
-			<button class="button button-assertive">
-  				Errar: {{scoreIfWrong}}
-			</button>
-			<button class="button button-assertive">
-  				Parar: {{currentScore}}
-			</button>
-			<button class="button button-assertive">
-  				Acertar: {{scoreIfRight}}
-			</button>
+		<div class="row">
+			<div class="col" style="text-align:center;color:white">Errar</div>
+			<div class="col" style="text-align:center;color:white">Parar</div>
+			<div class="col" style="text-align:center;color:white">Acertar</div>
+		</div>
+
+		<div class="button-bar">
+  			<a class="button button-royal">
+  				{{scoreIfWrong | currency}}
+			</a>
+  			<a class="button button-royal">
+  				{{currentScore | currency}}
+			</a>
+  			<a class="button button-royal">
+  				{{scoreIfRight | currency}}
+			</a>
 		</div>
 
 	</ion-content>

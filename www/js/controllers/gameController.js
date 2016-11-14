@@ -55,18 +55,19 @@
 		// Confirmation dialog
 		$scope.showConfirm = function() {
 			var confirmPopup = $ionicPopup.confirm({
-				title: 'Tem certeza?',
-				template: 'Você está certo(a) disso?',
-				okText: 'Sim',
-				cancelText: 'Não'
-			});
-
-			confirmPopup.then(function(response) {
-				if (response) {
-					$scope.goToNextQuestion();
-					//$state.go('home.gametransition');
-					//$scope.goToNextQuestion();
-				}
+				title: 'Você está certo(a) disso?',
+				buttons: [
+					{
+						text: 'Sim', 
+						type: 'button-positive',
+						onTap: function(e) {
+								$scope.goToNextQuestion();
+							}						
+					},
+					{
+						text: '<b>Não</b>',
+						type: 'button-positive'
+					}]				
 			});
 		};		
 	}

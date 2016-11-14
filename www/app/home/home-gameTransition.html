@@ -1,22 +1,19 @@
 <ion-view title="gametransition_view">
 	<ion-content class="has-header">
 
-		<div class="list">
-			<div class="list card">
-
-				<div>
-					<h2>Resposta Certa!</h2>
-				</div>
-
+			<div class="card item-text-wrap">
+				
 				<div class="item item-body">
+					<h1>Resposta Certa!</h1>
+
 					<h3>Próxima pergunta valendo: 
-						<p class="subdued">
-							{{scoreIfRight}}
-						</p>
+						<h2>
+							{{scoreIfRight | currency}}
+						</h2>
 					</h3>
 				</div>
+
 			</div>
-		</div>
 
 	</ion-content>
 </ion-view>
