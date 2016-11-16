@@ -12,74 +12,55 @@
 
 		var gameData = {
 			gameLevel: 1,
-			questions: [{
-				text: 'quanto é 2+2?',
-				alternatives: ['2', '1', '4', '22'],
-				correctAnswerIndex: 2,
-				selectedIndex: -1
-				}, 
-				{
-				text: 'batatinha quando nasce...',
-				alternatives: ['pega o aviao', 'Esparrama pelo chao', 'salta do busao', 'chora'],
-				correctAnswerIndex: 1,
-				selectedIndex: -1
-				},
-				{
-				text: 'Quem reprovava os calouros em seu programa tocando uma buzina?',
-				alternatives: ['Raul Gil', 'Bolinha', 'Flavio Cavalcanti', 'Chacrinha'],
-				correctAnswerIndex: 3,
-				selectedIndex: -1
-				},
-				{
-				text: 'Quem é o pai da Sacha a Filha da Xuxa?',
-				alternatives: ['Luciano Cantor', 'Luciano Huck', 'Luciano Szafir', 'Luciano do Vale'],
-				correctAnswerIndex: 2,
-				selectedIndex: -1
-				},
-				{
-				text: 'Que personagem da Turma do Chaves vive cobrando aluguel do Seu Madruga?',
-				alternatives: ['Kiko', 'Chaves', 'Seu Barriga', 'Professor Girafales'],
-				correctAnswerIndex: 2,
-				selectedIndex: -1
-				},
-				{
-				text: 'Como é chamada a contora que representa o papel primcipal em uma ópera?',
-				alternatives: ['Primeira Dama', 'Dona Prima', 'Prima Dona', 'Obra Prima'],
-				correctAnswerIndex: 2,
-				selectedIndex: -1
-				},
-				{
-				text: 'O que é um Oboé?',
-				alternatives: ['Vulcão', 'Comida', 'Instrumento', 'Tribo'],
-				correctAnswerIndex: 2,
-				selectedIndex: -1
-				},
-				{
-				text: 'Quantos jogadores um jogo de vôlei reune na quadra?',
-				alternatives: ['6', '8', '10', '12'],
-				correctAnswerIndex: 3,
-				selectedIndex: -1
-				},
-				{
-				text: 'De que país europeu dependem politicamente as ilhas Ferroe?',
-				alternatives: ['Rússia', 'Suécia', 'Espanha', 'Dimamarca'],
-				correctAnswerIndex: 3,
-				selectedIndex: -1
-				}, 				
-				{
-				text: 'Quem descobriu o Brasil?',
-				alternatives: ['Eu', 'Tu', 'Ele', 'Nós'],
-				correctAnswerIndex: 2,
-				selectedIndex: -1
-				}, 				
-				]
+			questions: []
 		}
 
 		var gameHistory = {
 			gamesPayed: []
 		}
 
-		function hasNextQuestion() {
+		loadQuestionsFromJson(initializeQuestions);
+
+		function loadQuestionsFromJson(callback) {   
+			var xhr = new XMLHttpRequest();
+			xhr.overrideMimeType("application/json");
+			// we should make sure that the json file with the questions is loaded synchronously
+			xhr.open('GET', 'js/testQuestions.json', false); 
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState == 4 && xhr.status == "200") {
+					callback(xhr.responseText);
+				}
+			};
+			xhr.send(null);  
+		}
+
+		function initializeQuestions() {
+			loadQuestionsFromJson(function(response) {
+    			var questions = JSON.parse(response);
+
+				// Transform Json that is on the input format (from questions.json) to the json format that we will use within the application
+				for (var i = 0; i < questions.length; i++) {
+					var questionFrom = questions[i];
+					
+					var questionTo = {
+						text: questionFrom.text,
+						alternatives: [],
+						correctAnswerIndex: questionFrom.right_answer - 1,
+						selectedIndex: -1
+					}
+
+					questionTo.alternatives.push(questionFrom.answer1);
+					questionTo.alternatives.push(questionFrom.answer2);
+					questionTo.alternatives.push(questionFrom.answer3);
+					questionTo.alternatives.push(questionFrom.answer4);
+
+					gameData.questions.push(questionTo);
+				}				
+			});
+			console.log(gameData);
+		}
+		
+ 		function hasNextQuestion() {
 			return currentQuestionIndex <= gameData.questions.length-1;
 		}
 

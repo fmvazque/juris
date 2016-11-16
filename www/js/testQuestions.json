@@ -1,0 +1,46 @@
+[
+  {
+    "subject": "TV",
+    "text": "Que personagem da Turma do Chaves vive cobrando aluguel do Seu Madruga?",
+    "answer1": "Kiko",
+    "answer2": "Chaves",
+    "answer3": "Seu Barriga",
+    "answer4": "Professor Girafales",
+    "right_answer": 3,
+    "difficulty": 1,
+    "": ""
+  },
+  {
+    "subject": "Esportes",
+    "text": "Quantos jogadores um jogo de vôlei reune na quadra?",
+    "answer1": "6",
+    "answer2": "8",
+    "answer3": "10",
+    "answer4": "12",
+    "right_answer": 4,
+    "difficulty": 1,
+    "": ""
+  },
+  {
+    "subject": "Artes",
+    "text": "Como é chamada a contora que representa o papel primcipal em uma ópera?",
+    "answer1": "Primeira Dama",
+    "answer2": "Dona Prima",
+    "answer3": "Prima Dona",
+    "answer4": "Obra Prima",
+    "right_answer": 3,
+    "difficulty": 3,
+    "": ""
+  },
+  {
+    "subject": "Conhecimentos Gerais",
+    "text": "O que é um Oboé?'",
+    "answer1": "Vulcão",
+    "answer2": "Comida",
+    "answer3": "Instrumento",
+    "answer4": "Tribo",
+    "right_answer": 3,
+    "difficulty": 2,
+    "": ""
+  }
+]

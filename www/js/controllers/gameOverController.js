@@ -19,6 +19,5 @@
 		$scope.currentScore = function() {
 			return gameApi.getCurrentStatus().currentScore;
 		}
-
 	}
 })();
