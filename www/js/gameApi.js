@@ -102,6 +102,7 @@
 		}
 
 		function recalculateScores() {
+			console.log("recalculateScores()")
 			currentScore = scoreIfRight;
 			scoreIfRight = scoreIfRight * 2;
 			scoreIfWrong = currentScore / 2;

@@ -33,7 +33,6 @@
 				$scope.scoreIfWrong = gameStatus.scoreIfWrong; 
 				$scope.currentScore = gameStatus.currentScore; 
 
-				//$state.go($state.current);
 				$state.go('home.gametransition');
 			}
 		};
