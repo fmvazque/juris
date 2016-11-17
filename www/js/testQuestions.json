@@ -1,5 +1,16 @@
 [
   {
+    "subject": "Artes",
+    "text": "Como é chamada a contora que representa o papel primcipal em uma ópera?",
+    "answer1": "Primeira Dama",
+    "answer2": "Dona Prima",
+    "answer3": "Prima Dona",
+    "answer4": "Obra Prima",
+    "right_answer": 3,
+    "difficulty": 3,
+    "": ""
+  },
+  {
     "subject": "TV",
     "text": "Que personagem da Turma do Chaves vive cobrando aluguel do Seu Madruga?",
     "answer1": "Kiko",
@@ -19,17 +30,6 @@
     "answer4": "12",
     "right_answer": 4,
     "difficulty": 1,
-    "": ""
-  },
-  {
-    "subject": "Artes",
-    "text": "Como é chamada a contora que representa o papel primcipal em uma ópera?",
-    "answer1": "Primeira Dama",
-    "answer2": "Dona Prima",
-    "answer3": "Prima Dona",
-    "answer4": "Obra Prima",
-    "right_answer": 3,
-    "difficulty": 3,
     "": ""
   },
   {

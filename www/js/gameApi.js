@@ -46,6 +46,7 @@
 						text: questionFrom.text,
 						alternatives: [],
 						correctAnswerIndex: questionFrom.right_answer - 1,
+						difficulty: questionFrom.difficulty,
 						selectedIndex: -1
 					}
 
@@ -57,6 +58,10 @@
 					gameData.questions.push(questionTo);
 				}				
 			});
+
+			// sort questions by difficulty level
+			gameData.questions = _.sortBy(gameData.questions, 'difficulty');
+			
 			console.log(gameData);
 		}
 		
