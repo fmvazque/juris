@@ -1,9 +1,9 @@
 (function () {
 	'use strict';
 
-	angular.module('jurisApp').factory('gameApi', [gameApi]);
+	angular.module('jurisApp').factory('gameApi', ['$http', gameApi]);
 
-	function gameApi() {
+	function gameApi($http) {
 		var currentQuestionIndex = 0;
 		var currentScore = 0;
 		var scoreIfRight = 1000;
@@ -19,50 +19,47 @@
 			gamesPayed: []
 		}
 
-		loadQuestionsFromJson(initializeQuestions);
+		loadQuestionsFromJson1(initializeQuestions);
 
-		function loadQuestionsFromJson(callback) {   
-			var xhr = new XMLHttpRequest();
-			xhr.overrideMimeType("application/json");
-			// we should make sure that the json file with the questions is loaded synchronously
-			xhr.open('GET', 'js/testQuestions.json', false); 
-			xhr.onreadystatechange = function () {
-				if (xhr.readyState == 4 && xhr.status == "200") {
-					callback(xhr.responseText);
-				}
-			};
-			xhr.send(null);  
+		function loadQuestionsFromJson1(callback) {   
+			$http.get("js/testQuestions.json")
+			.success(function(data) {
+				callback(data);
+			})
+			.error(function(data) {
+				console.log("could not load data from testQuestions.json");
+			});
 		}
 
-		function initializeQuestions() {
-			loadQuestionsFromJson(function(response) {
-    			var questions = JSON.parse(response);
+		function initializeQuestions(data) {
+			var questions = data;
 
-				// Transform Json that is on the input format (from questions.json) to the json format that we will use within the application
-				for (var i = 0; i < questions.length; i++) {
-					var questionFrom = questions[i];
-					
-					var questionTo = {
-						text: questionFrom.text,
-						alternatives: [],
-						correctAnswerIndex: questionFrom.right_answer - 1,
-						difficulty: questionFrom.difficulty,
-						selectedIndex: -1
-					}
+			// Transform Json that is on the input format (from questions.json) to the json format that we will use within the application
+			for (var i = 0; i < questions.length; i++) {
+				var questionFrom = questions[i];
 
-					questionTo.alternatives.push(questionFrom.answer1);
-					questionTo.alternatives.push(questionFrom.answer2);
-					questionTo.alternatives.push(questionFrom.answer3);
-					questionTo.alternatives.push(questionFrom.answer4);
+				console.log(questionFrom);
+				
+				var questionTo = {
+					text: questionFrom.text,
+					alternatives: [],
+					correctAnswerIndex: questionFrom.right_answer - 1,
+					difficulty: questionFrom.difficulty,
+					selectedIndex: -1
+				}
 
-					gameData.questions.push(questionTo);
-				}				
-			});
+				questionTo.alternatives.push(questionFrom.answer1);
+				questionTo.alternatives.push(questionFrom.answer2);
+				questionTo.alternatives.push(questionFrom.answer3);
+				questionTo.alternatives.push(questionFrom.answer4);
+
+				console.log(questionTo);
+
+				gameData.questions.push(questionTo);
+			}				
 
 			// sort questions by difficulty level
 			gameData.questions = _.sortBy(gameData.questions, 'difficulty');
-			
-			console.log(gameData);
 		}
 		
  		function hasNextQuestion() {
