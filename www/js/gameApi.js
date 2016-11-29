@@ -10,6 +10,7 @@
 		var scoreIfWrong = 0;
 		var isGameOver = false;
 		var selectedSubject = "";
+		var selectedQuestions = [];
 
 		var gameData = {
 			gameLevel: 1,
@@ -63,7 +64,7 @@
 			}				
 
 			// sort questions by difficulty level
-			gameData.questions = _.sortBy(gameData.questions, 'difficulty');
+			//gameData.questions = _.sortBy(gameData.questions, 'difficulty');
 
 			// initializes the list of subjects 
 			subjects = _.pluck(gameData.questions, 'subject');
@@ -72,14 +73,16 @@
 		}
 		
  		function hasNextQuestion() {
-			return currentQuestionIndex <= gameData.questions.length-1;
+			//return currentQuestionIndex <= gameData.questions.length-1;
+			return currentQuestionIndex <= selectedQuestions.length-1;
 		}
 
 		// Advance game
 		function advance(userAnswer) {
 			console.log('advancing game');
 
-			var currentQuestion = gameData.questions[currentQuestionIndex];
+			//var currentQuestion = gameData.questions[currentQuestionIndex];
+			var currentQuestion = selectedQuestions[currentQuestionIndex];
 
 			if (currentQuestion && userAnswer === currentQuestion.alternatives[currentQuestion.correctAnswerIndex]) {
 				recalculateScores();
@@ -93,9 +96,16 @@
 
 		function findNextQuestionIndex() {
 			// if we are using one specific subject, filter by that subject
+			// if (selectedSubject !== "") {
+			// 	while (++currentQuestionIndex < gameData.questions.length) {
+			// 		if (gameData.questions[currentQuestionIndex].subject === selectedSubject)  {
+			// 			break;
+			// 		}
+			// 	}
+			// }
 			if (selectedSubject !== "") {
-				while (++currentQuestionIndex < gameData.questions.length) {
-					if (gameData.questions[currentQuestionIndex].subject === selectedSubject)  {
+				while (++currentQuestionIndex < selectedQuestions.length) {
+					if (selectedQuestions[currentQuestionIndex].subject === selectedSubject)  {
 						break;
 					}
 				}
@@ -121,14 +131,71 @@
 			scoreIfRight = 1000;
 			scoreIfWrong = 0;
 
+			// select the questions by the subject chosen by the user
+			var level1Questions = _.filter(gameData.questions, function(q) {
+				return q.subject === selectedSubject && q.difficulty === 1;  
+			});
+			var level2Questions = _.filter(gameData.questions, function(q) {
+				return q.subject === selectedSubject && q.difficulty === 2;  
+			});
+			var level3Questions = _.filter(gameData.questions, function(q) {
+				return q.subject === selectedSubject && q.difficulty === 3;  
+			});
+			var level4Questions = _.filter(gameData.questions, function(q) {
+				return q.subject === selectedSubject && q.difficulty === 4;  
+			});
+			var level5Questions = _.filter(gameData.questions, function(q) {
+				return q.subject === selectedSubject && q.difficulty === 5;  
+			});
+
+			console.log("level 1 questions");
+			console.log(level1Questions);
+
+			console.log("sample");
+			console.log(_.sample(level1Questions, 5));
+
+			selectedQuestions = [];
+			selectedQuestions = selectedQuestions.concat(_.sample(level1Questions, 5));			
+			selectedQuestions = selectedQuestions.concat(_.sample(level3Questions, 5));			
+			selectedQuestions = selectedQuestions.concat(_.sample(level4Questions, 4));			
+			selectedQuestions = selectedQuestions.concat(_.sample(level5Questions, 2));			
+
+			console.log("selected questions");
+			console.log(selectedQuestions);
+
 			findNextQuestionIndex();
 		}
 
 		function recalculateScores() {
-			console.log("recalculateScores()")
 			currentScore = scoreIfRight;
-			scoreIfRight = scoreIfRight * 2;
-			scoreIfWrong = currentScore / 2;
+			
+			// Calculate new score if right and new score if wrong
+			if (scoreIfRight < 5000) {
+				scoreIfRight += 1000;	
+			}
+			else if (scoreIfRight == 5000) {
+				scoreIfRight *= 2;	
+			}
+			else if (scoreIfRight < 50000){
+				scoreIfRight += 10000;	
+			}
+			else if (scoreIfRight == 50000) {
+				scoreIfRight *= 2;	
+			}
+			else if (scoreIfRight < 500000){
+				scoreIfRight += 100000;	
+			}
+			else if (scoreIfRight == 500000) {
+				scoreIfRight *= 2;	
+			}
+
+			// If this is the million question, then score if wrong is zero!
+			if (scoreIfRight <= 500000) {
+				scoreIfWrong = currentScore / 2;
+			}
+			else {
+				scoreIfWrong = 0;
+			}
 		}
 
 		function getSubjects() {
@@ -152,7 +219,8 @@
 			return {
 				isGameOver: isGameOver,
 				hasWinner: !hasNextQuestion(),
-				currentQuestion: gameData.questions[currentQuestionIndex],
+				//currentQuestion: gameData.questions[currentQuestionIndex],
+				currentQuestion: selectedQuestions[currentQuestionIndex],
 				currentScore: currentScore,
 				scoreIfWrong: scoreIfWrong,
 				scoreIfRight: scoreIfRight

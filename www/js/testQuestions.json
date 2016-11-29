@@ -196,5 +196,16 @@
     "right_answer": 3,
     "difficulty": 5,
     "": ""
+  },
+  {
+    "subject": "Conhecimentos Gerais",
+    "text": "Como se chama o canal que separa a França da Inglaterra?",
+    "answer1": "Canal do Panamá",
+    "answer2": "Canal de Suez",
+    "answer3": "Canal da Mancha",
+    "answer4": "Canal de Kiel",
+    "right_answer": 3,
+    "difficulty": 5,
+    "": ""
   }
 ]

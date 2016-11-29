@@ -6,7 +6,7 @@
 
 	function gameNewController(gameApi, $scope, $state, $timeout) {
 		
-		$scope.subjects = ["Carregando tópicos..."];
+		$scope.subjects = ["Carregando disciplinas..."];
 
 		gameApi.getSubjects().then(
 			function(res) {
