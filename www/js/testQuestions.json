@@ -42,5 +42,159 @@
     "right_answer": 3,
     "difficulty": 2,
     "": ""
+  },
+  {
+    "subject": "Conhecimentos Gerais",
+    "text": "Quem é o homem mais sedutor do mundo?'",
+    "answer1": "Dom Juan",
+    "answer2": "Dom Antonio",
+    "answer3": "Dom Marco",
+    "answer4": "Dom Carlos",
+    "right_answer": 1,
+    "difficulty": 1,
+    "": ""
+  },
+  {
+    "subject": "Conhecimentos Gerais",
+    "text": "De quantos anos é constituído um século?'",
+    "answer1": "50",
+    "answer2": "100",
+    "answer3": "1.000",
+    "answer4": "1.500",
+    "right_answer": 2,
+    "difficulty": 1,
+    "": ""
+  },
+  {
+    "subject": "Conhecimentos Gerais",
+    "text": "Qual é o coletivo de cães?'",
+    "answer1": "Matilha",
+    "answer2": "Rebanho",
+    "answer3": "Cardume",
+    "answer4": "Manada",
+    "right_answer": 1,
+    "difficulty": 1,
+    "": ""
+  },
+  {
+    "subject": "Conhecimentos Gerais",
+    "text": "Qual é a maior floresta do planeta?'",
+    "answer1": "Negra",
+    "answer2": "De Sherwood",
+    "answer3": "Da Tijuca",
+    "answer4": "Amazônia",
+    "right_answer": 4,
+    "difficulty": 1,
+    "": ""
+  },
+  {
+    "subject": "Conhecimentos Gerais",
+    "text": "Qual é o naipe do baralho que tem o desenho de coração?'",
+    "answer1": "Ouros",
+    "answer2": "Paus",
+    "answer3": "Copas",
+    "answer4": "Espadas",
+    "right_answer": 3,
+    "difficulty": 2,
+    "": ""
+  },
+  {
+    "subject": "Conhecimentos Gerais",
+    "text": "Qual é o fruto conhecido no Brasil como 'Jerimum'?'",
+    "answer1": "Caju",
+    "answer2": "Abóbora",
+    "answer3": "Chuchu",
+    "answer4": "Coco",
+    "right_answer": 2,
+    "difficulty": 3,
+    "": ""
+  },
+  {
+    "subject": "Conhecimentos Gerais",
+    "text": "Qual presidente brasileiro reuniciou em 1992?'",
+    "answer1": "Itamar Granco",
+    "answer2": "Fernando Collor",
+    "answer3": "José Sarney",
+    "answer4": "Figueiredo",
+    "right_answer": 2,
+    "difficulty": 3,
+    "": ""
+  },
+  {
+    "subject": "Conhecimentos Gerais",
+    "text": "A que classe de animais o pinguim pertence?'",
+    "answer1": "Peixes",
+    "answer2": "Mamíferos",
+    "answer3": "Aves",
+    "answer4": "Felinos",
+    "right_answer": 3,
+    "difficulty": 3,
+    "": ""
+  },
+  {
+    "subject": "Conhecimentos Gerais",
+    "text": "Qual é a capital do Canadá?'",
+    "answer1": "Montreal",
+    "answer2": "Otawa",
+    "answer3": "Vancouver",
+    "answer4": "Washington",
+    "right_answer": 2,
+    "difficulty": 3,
+    "": ""
+  },
+  {
+    "subject": "Conhecimentos Gerais",
+    "text": "Qual desses países não fica na Asia?'",
+    "answer1": "Paquistão",
+    "answer2": "Japão",
+    "answer3": "Tailândia",
+    "answer4": "Egito",
+    "right_answer": 4,
+    "difficulty": 4,
+    "": ""
+  },
+  {
+    "subject": "Conhecimentos Gerais",
+    "text": "Onde nasceu Van Gogh?'",
+    "answer1": "Polônia",
+    "answer2": "França",
+    "answer3": "Itália",
+    "answer4": "Holanda",
+    "right_answer": 4,
+    "difficulty": 4,
+    "": ""
+  },
+  {
+    "subject": "Conhecimentos Gerais",
+    "text": "Pablo Picasso foi um dos criadores do:",
+    "answer1": "Cubismo",
+    "answer2": "Surrealismo",
+    "answer3": "Impressionismo",
+    "answer4": "Realismo",
+    "right_answer": 3,
+    "difficulty": 4,
+    "": ""
+  },
+  {
+    "subject": "Conhecimentos Gerais",
+    "text": "Qual é a maior ilha da Europa",
+    "answer1": "Gra-Bretanha",
+    "answer2": "Irlanda",
+    "answer3": "Islândia",
+    "answer4": "Sicília",
+    "right_answer": 1,
+    "difficulty": 5,
+    "": ""
+  },
+  {
+    "subject": "Conhecimentos Gerais",
+    "text": "Como é chamada a gravura impressa sobre pranchas de madeira?",
+    "answer1": "Materografia",
+    "answer2": "Litografia",
+    "answer3": "Xilografia",
+    "answer4": "Serigrafia",
+    "right_answer": 3,
+    "difficulty": 5,
+    "": ""
   }
 ]

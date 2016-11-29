@@ -1,14 +1,15 @@
 (function () {
 	'use strict';
 
-	angular.module('jurisApp').factory('gameApi', ['$http', gameApi]);
+	angular.module('jurisApp').factory('gameApi', ['$http', '$q', '$timeout', gameApi]);
 
-	function gameApi($http) {
+	function gameApi($http, $q, $timeout) {
 		var currentQuestionIndex = 0;
 		var currentScore = 0;
 		var scoreIfRight = 1000;
 		var scoreIfWrong = 0;
 		var isGameOver = false;
+		var selectedSubject = "";
 
 		var gameData = {
 			gameLevel: 1,
@@ -19,10 +20,12 @@
 			gamesPayed: []
 		}
 
-		loadQuestionsFromJson1(initializeQuestions);
+		var subjects = [];
 
-		function loadQuestionsFromJson1(callback) {   
-			$http.get("js/testQuestions.json")
+		loadQuestionsFromJson(initializeQuestions);
+
+		function loadQuestionsFromJson(callback) {   
+			$http.get("js/questions.json")
 			.success(function(data) {
 				callback(data);
 			})
@@ -41,6 +44,7 @@
 				console.log(questionFrom);
 				
 				var questionTo = {
+					subject: questionFrom.subject,
 					text: questionFrom.text,
 					alternatives: [],
 					correctAnswerIndex: questionFrom.right_answer - 1,
@@ -60,6 +64,11 @@
 
 			// sort questions by difficulty level
 			gameData.questions = _.sortBy(gameData.questions, 'difficulty');
+
+			// initializes the list of subjects 
+			subjects = _.pluck(gameData.questions, 'subject');
+			subjects = _.uniq(subjects);
+			selectedSubject = subjects[0];
 		}
 		
  		function hasNextQuestion() {
@@ -73,14 +82,26 @@
 			var currentQuestion = gameData.questions[currentQuestionIndex];
 
 			if (currentQuestion && userAnswer === currentQuestion.alternatives[currentQuestion.correctAnswerIndex]) {
-				currentQuestionIndex++;
 				recalculateScores();
+				findNextQuestionIndex();
 			}
-			else {
+			else 
 				isGameOver = currentQuestionIndex >= 0;
-			}
-
+			
 			return getCurrentStatus();
+		}
+
+		function findNextQuestionIndex() {
+			// if we are using one specific subject, filter by that subject
+			if (selectedSubject !== "") {
+				while (++currentQuestionIndex < gameData.questions.length) {
+					if (gameData.questions[currentQuestionIndex].subject === selectedSubject)  {
+						break;
+					}
+				}
+			}
+			else 
+				currentQuestionIndex++;
 		}
 
 		function newGame() {
@@ -95,12 +116,12 @@
 			}
 
 			isGameOver = false;
-			currentQuestionIndex = 0;
+			currentQuestionIndex = -1;
 			currentScore = 0;
 			scoreIfRight = 1000;
 			scoreIfWrong = 0;
 
-			console.log('currentQuestionIndex: ' + currentQuestionIndex);
+			findNextQuestionIndex();
 		}
 
 		function recalculateScores() {
@@ -108,6 +129,23 @@
 			currentScore = scoreIfRight;
 			scoreIfRight = scoreIfRight * 2;
 			scoreIfWrong = currentScore / 2;
+		}
+
+		function getSubjects() {
+			var d = $q.defer();
+			$timeout(function(){
+				d.resolve(subjects);
+			}, 1000); 
+		    return d.promise;		
+		}
+
+		function setSubject(subject) {
+			selectedSubject = subject;
+			newGame();
+		}
+
+		function getSelectedSubject() {
+			return selectedSubject;
 		}
 
 		function getCurrentStatus() {
@@ -124,6 +162,9 @@
 		return {
 			newGame : newGame,
 			advance : advance,
+			getSubjects: getSubjects,
+			setSubject: setSubject,
+			getSelectedSubject: getSelectedSubject,
 			getCurrentStatus: getCurrentStatus
 		};
 	};

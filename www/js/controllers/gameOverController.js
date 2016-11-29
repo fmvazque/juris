@@ -9,7 +9,7 @@
 
 		$scope.startOver = function() {
 			gameApi.newGame();
-			$state.go('home.game');
+			$state.go('home.newgame');
 		}
 
 		$scope.hasWonGame = function() {
