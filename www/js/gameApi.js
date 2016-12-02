@@ -63,9 +63,6 @@
 				gameData.questions.push(questionTo);
 			}				
 
-			// sort questions by difficulty level
-			//gameData.questions = _.sortBy(gameData.questions, 'difficulty');
-
 			// initializes the list of subjects 
 			subjects = _.pluck(gameData.questions, 'subject');
 			subjects = _.uniq(subjects);
@@ -73,7 +70,6 @@
 		}
 		
  		function hasNextQuestion() {
-			//return currentQuestionIndex <= gameData.questions.length-1;
 			return currentQuestionIndex <= selectedQuestions.length-1;
 		}
 
@@ -81,7 +77,6 @@
 		function advance(userAnswer) {
 			console.log('advancing game');
 
-			//var currentQuestion = gameData.questions[currentQuestionIndex];
 			var currentQuestion = selectedQuestions[currentQuestionIndex];
 
 			if (currentQuestion && userAnswer === currentQuestion.alternatives[currentQuestion.correctAnswerIndex]) {
@@ -95,14 +90,6 @@
 		}
 
 		function findNextQuestionIndex() {
-			// if we are using one specific subject, filter by that subject
-			// if (selectedSubject !== "") {
-			// 	while (++currentQuestionIndex < gameData.questions.length) {
-			// 		if (gameData.questions[currentQuestionIndex].subject === selectedSubject)  {
-			// 			break;
-			// 		}
-			// 	}
-			// }
 			if (selectedSubject !== "") {
 				while (++currentQuestionIndex < selectedQuestions.length) {
 					if (selectedQuestions[currentQuestionIndex].subject === selectedSubject)  {
@@ -133,35 +120,26 @@
 
 			// select the questions by the subject chosen by the user
 			var level1Questions = _.filter(gameData.questions, function(q) {
-				return q.subject === selectedSubject && q.difficulty === 1;  
+				return (selectedSubject === "" || q.subject === selectedSubject) && q.difficulty === 1; 
 			});
 			var level2Questions = _.filter(gameData.questions, function(q) {
-				return q.subject === selectedSubject && q.difficulty === 2;  
+				return (selectedSubject === "" || q.subject === selectedSubject) && q.difficulty === 2;  
 			});
 			var level3Questions = _.filter(gameData.questions, function(q) {
-				return q.subject === selectedSubject && q.difficulty === 3;  
+				return (selectedSubject === "" || q.subject === selectedSubject) && q.difficulty === 3;  
 			});
 			var level4Questions = _.filter(gameData.questions, function(q) {
-				return q.subject === selectedSubject && q.difficulty === 4;  
+				return (selectedSubject === "" || q.subject === selectedSubject) && q.difficulty === 4;  
 			});
 			var level5Questions = _.filter(gameData.questions, function(q) {
-				return q.subject === selectedSubject && q.difficulty === 5;  
+				return (selectedSubject === "" || q.subject === selectedSubject) && q.difficulty === 5;  
 			});
-
-			console.log("level 1 questions");
-			console.log(level1Questions);
-
-			console.log("sample");
-			console.log(_.sample(level1Questions, 5));
 
 			selectedQuestions = [];
 			selectedQuestions = selectedQuestions.concat(_.sample(level1Questions, 5));			
 			selectedQuestions = selectedQuestions.concat(_.sample(level3Questions, 5));			
 			selectedQuestions = selectedQuestions.concat(_.sample(level4Questions, 4));			
 			selectedQuestions = selectedQuestions.concat(_.sample(level5Questions, 2));			
-
-			console.log("selected questions");
-			console.log(selectedQuestions);
 
 			findNextQuestionIndex();
 		}
@@ -219,7 +197,6 @@
 			return {
 				isGameOver: isGameOver,
 				hasWinner: !hasNextQuestion(),
-				//currentQuestion: gameData.questions[currentQuestionIndex],
 				currentQuestion: selectedQuestions[currentQuestionIndex],
 				currentScore: currentScore,
 				scoreIfWrong: scoreIfWrong,

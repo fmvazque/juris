@@ -9,6 +9,12 @@
 
 					<button 
 						class="button button-full button-balanced"
+						ng-click="setSubject('')">
+						Aleatóreo
+					</button>					
+
+					<button 
+						class="button button-full button-balanced"
 						ng-repeat="subject in subjects"
 						ng-click="setSubject(subject)">
 						{{ subject }}

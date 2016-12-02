@@ -7,6 +7,7 @@
 	function gameTransitionController(gameApi, $scope, $state, $timeout) {
 		var vm = this;
 
+		$scope.currentScore = gameApi.getCurrentStatus().currentScore; 
 		$scope.scoreIfRight = gameApi.getCurrentStatus().scoreIfRight; 
 
 		$scope.$on('$ionicView.enter', function() {
