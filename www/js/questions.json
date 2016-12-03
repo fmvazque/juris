@@ -1483,5 +1483,126 @@
     "right_answer": 3,
     "difficulty": 5,
     "": ""
-  }
+  },
+  {
+    "subject": "Introdução ao direito",
+    "text": "De acordo com o entendimento de Max Weber, expresso na obra Ciência e Política: duas vocações, a significação de que está revestido todo o trabalho científico é a de que toda obra científica acabada (FCC-DPE-SP-2015 –Defensor Público):",
+    "answer1": "não tem outro sentido senão o de fazer surgirem novos paradigmas.",
+    "answer2": "somente tem sentido ao fazer surgirem novos paradigmas.",
+    "answer3": "somente tem sentido se não permitir que surjam novas indagações.",
+    "answer4": "não tem outro sentido senão o de fazer surgirem novas indagações.",
+    "right_answer": 4,
+    "difficulty": 1,
+    "": ""
+  },
+  {
+    "subject": "Introdução ao direito",
+    "text": "No panorama histórico da Ciência do Direito, realizado por Tércio Sampaio Ferraz Júnior, na obra A Ciência do Direito, o autor caracteriza a prática dos glosadores da seguinte forma: “Tomando como base assentada os textos de Justiniano, os juristas da época passaram a dar-lhes um tratamento metódico, cujas raízes estavam nas técnicas explicativas usadas em aulas, sobretudo no chamado Trivium, composto de gramática, retórica e dialética, que compunham as artes liberales de então. Com isto, eles desenvolveram uma técnica especial de abordagem de textos pré-fabricados e aceitos por sua autoridade, caracterizada pela glosa gramatical e filológica, pela exegese ou explicação do sentido, pela concordância, pela distinção\". Neste sentido, o autor considera que neste confronto do texto estabelecido e do seu tratamento explicativo, presente na prática dos glosadores, é que nasce a (FCC-DPE-SP-2015-Defensor Público):",
+    "answer1": "Jurisprudência medieval com seu caráter eminentemente dialético.",
+    "answer2": "Ciência do Direito com seu caráter eminentemente dogmático.",
+    "answer3": "Ciência do Direito com seu caráter eminentemente zetético.",
+    "answer4": "Ciência do Direito com seu caracter exclusivamente interpretativo.",
+    "right_answer": 2,
+    "difficulty": 1,
+    "": ""
+  },
+  {
+    "subject": "Introdução ao direito",
+    "text": "Segundo a explicação de H. Kelsen, na obra O que é justiça?, a doutrina do Direito natural pressupõe que o valor é (FCC-DPE-SP-2015-Defensor Público):",
+    "answer1": "imanente à realidade e é contingente.",
+    "answer2": "consequente da conduta e é contingente",
+    "answer3": "consequente da conduta e é relativo",
+    "answer4": "imanente a realidade e é absoluto",
+    "right_answer": 4,
+    "difficulty": 1,
+    "": ""
+  },
+  {
+    "subject": "Introdução ao direito",
+    "text": "“A exigência de uma sistematização do Direito acabou por impor aos juristas a valorização do preceito legal no julgamento de fatos vitais decisivos. Daí surgiu, na França, já no século XIX, a poderosa 'École de l'Exégèse', de grande influência nos países em que o espírito napoleônico predominou, correspondendo, no mundo germânico, à doutrina dos pandectistas. A tarefa do jurista circunscreveu-se, a partir daí, cada vez mais à teorização e sistematização da experiência jurídica, em termos de uma unificação construtiva dos juízos normativos e do esclarecimento dos seus fundamentos (...)\". No trecho acima, extraído de seu livro A Ciência do Direito, Tércio Sampaio Ferraz Júnior refere-se a características do (FCC-DPE-SP-2015-Defensor Público):",
+    "answer1": "Jusnaturalismo Jurídico",
+    "answer2": "Historicismo Jurídico",
+    "answer3": "Positivismo Jurídico",
+    "answer4": "Neopositivismo Jurídico",
+    "right_answer": 3,
+    "difficulty": 1,
+    "": ""
+  },
+  {
+    "subject": "Introdução ao direito",
+    "text": "No que concerne à interpretação do direito e ao método de interpretação pela lógica do razoável, assinale a opção correta (CESPE-MPE-AC-2014-Promotor de Justiça):",
+    "answer1": "A aplicação do direito pressupõe a utilização do lógos do razoável, uma vez que os procedimentos decisórios não obedecem a qualquer tipo de predeterminação de seus conteúdos.",
+    "answer2": "Ao considerarem regras e princípios, aspectos pessoais e sociais, circunstâncias e finalidades, assim como ao analisarem o direito a ser aplicado no caso concreto, os juízes exercem atividade dedutiva.",
+    "answer3": "A segurança jurídica, objetivo superior da legislação, depende mais do processo lógico de interpretação das normas jurídicas que dos princípios extraídos das normas escritas, considerando-se a roupagem mais ou menos apropriada como eles se apresentam.",
+    "answer4": "No que diz respeito aos resultados, a interpretação especificadora emana da própria lei ou ato normativo, surgindo do próprio poder que interpreta seu ato normativo.",
+    "right_answer": 1,
+    "difficulty": 3,
+    "": ""
+  },
+  {
+    "subject": "Introdução ao direito",
+    "text": "No que se refere às vertentes teóricas acerca da natureza jurídica do direito subjetivo, assinale a opção correta (CESPE-MPE-AC-2014-Promotor de Justiça):",
+    "answer1": "Segundo a teoria da garantia, o direito subjetivo constitui interesse tutelado pela ordem jurídica mediante o reconhecimento da vontade individual, o que pressupõe um direito subsistente na volição.",
+    "answer2": "A teoria lógico-formal, centrada em depurar do estudo do direito quaisquer elementos metajurídicos, promove a redução formalista do dever jurídico e, concomitantemente, do direito subjetivo à norma jurídica.",
+    "answer3": "Segundo  a teoria eclética, não há direito subjetivo: nem o indivíduo nem a coletividade possuem direitos, uma vez que a regra de direito cria um comportamento (positivo ou negativo), configurando-se uma situação de caráter objetivo.",
+    "answer4": "A teoria egológica do direito confere novo tratamento à noção de direito subjetivo, que, identificado com a liberdade humana, expressa o movimento espontâneo da vida humana ? liberdade fenomenizada ? no campo do não proibido.",
+    "right_answer": 4,
+    "difficulty": 3,
+    "": ""
+  },
+  {
+    "subject": "Introdução ao direito",
+    "text": "Em sua teoria do ordenamento jurídico, Norberto Bobbio estuda os aspectos da unidade, da coerência e da completude do ordenamento. Relativamente ao aspecto da coerência do ordenamento jurídico, \"a situação de normas incompatíveis entre si\" refere-se ao problema (FCC-DPE-SP-2010-Defensor Público):",
+    "answer1": "das antinomias",
+    "answer2": "da analogia",
+    "answer3": "das lacunas",
+    "answer4": "da incompletude",
+    "right_answer": 1,
+    "difficulty": 3,
+    "": ""
+  },
+  {
+    "subject": "Introdução ao direito",
+    "text": "Na perspectiva da Teoria Pura do Direito de Hans Kelsen, é possível distinguir uma “jurisprudência” que trata da validade do Direito de outra que considera a eficácia do Direito. Para o pensador, estas jurisprudências “andam lado a lado” e “nenhuma é capaz de substituir a outra, porque cada uma trata de problemas diferentes”. Daí a Teoria Pura do Direito insistir em distingui-las claramente. Segundo a nomenclatura que lhes é atribuída por Kelsen, na obra O que é justiça?, elas podem ser chamadas, respectivamente, de (FCC-DPE-SP-2012-Defensor Público):",
+    "answer1": "jurisprudência sociológica e jurisprudência normativa",
+    "answer2": "Jurisprudência eficiente e jurisprudência validativa.",
+    "answer3": "Jurisprudência normativa e jurisprudência sociológica.",
+    "answer4": "Jurisprudência normativa e jurisprudência eficiente.",
+    "right_answer": 3,
+    "difficulty": 3,
+    "": ""
+  },
+  {
+    "subject": "Introdução ao direito",
+    "text": "O raciocínio analógico é típico do pensamento jurídico. Esse é um tema debatido por vários teóricos e filósofos do Direito. Para Norberto Bobbio, na obra Teoria do Ordenamento Jurídico, trata-se de um método de autointegração do Direito. Assinale a opção que, segundo esse autor, apresenta o conceito de analogia (FGV-OAB-Exame de Ordem Unificado – XX – Primeira Fase – 2016):",
+    "answer1": "Subsunção de um caso (premissa menor) a uma norma jurídica (premissa maior) de forma a permitir uma conclusão lógica e necessária.",
+    "answer2": "existindo relevante semelhança entre dois casos, as consequências jurídicas atribuídas a um caso já regulamentado deverão ser atribuídas também a um caso não-regulamentado.",
+    "answer3": "Racioncínio em que se produz, como efeito, a extensão de uma norma jurídica para casos não previstos por esta.",
+    "answer4": "Decisão, por meio de recurso, às práticas sociais que sejam uniformes e continuadas e que possuam previsão de necessidade jurídica.",
+    "right_answer": 2,
+    "difficulty": 5,
+    "": ""
+  },
+  {
+    "subject": "Introdução ao direito",
+    "text": "Para o jusfilósofo Norberto Bobbio, uma antinomia real se caracteriza quando estamos diante (FGV-OAB-2015-Exame de Ordem Unificado – XIII – Primeira Fase):",
+    "answer1": "de duas normas colidentes que pertencem a ordenamentos jurídicos diferentes.",
+    "answer2": "de normas que colidem entre si, porém essa colisão é solúvel mediante a aplicação do critério cronológico, do critério hierárquico ou do critério de especialidade.",
+    "answer3": "de normas colidentes e o intérprete é abandonado a si mesmo pela falta de um critério ou pela impossibilidade de solução do conflito entre os critérios existentes.",
+    "answer4": "de duas ou mais normas que colidem entre si e que possuem diferentes âmbitos de validade temporal, espacial, pessoal ou material.",
+    "right_answer": 3,
+    "difficulty": 5,
+    "": ""
+  },
+  {
+    "subject": "Introdução ao direito",
+    "text": "O Art. 126 do CPC afirma que o juiz não se exime de sentenciar ou despachar alegando lacuna ou obscuridade da lei. A questão das lacunas também é recorrente no âmbito dos estudos da Filosofia e da Teoria Geral do Direito. O jusfilósofo Norberto Bobbio, no livro Teoria do Ordenamento Jurídico apresenta um estudo sobre essa questão. O autor denomina por lacuna ideológica a falta de uma norma (FGV-OAB-2015-Exame de Ordem Unificado – XVI – Primeira Fase):",
+    "answer1": "legitimidade produzida pelo legislador democrático",
+    "answer2": "Justa, que enseje uma solução satisfatória ao caso concreto.",
+    "answer3": "que atenda às convicções ideológicas pessoais do juiz.",
+    "answer4": "costumeira, que tenha surgido de práticas sociais inspiradas nos valores vigentes.",
+    "right_answer": 2,
+    "difficulty": 5,
+    "": ""
+  }  
 ]
