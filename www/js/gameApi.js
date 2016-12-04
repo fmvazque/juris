@@ -144,8 +144,9 @@
 
 			selectedQuestions = [];
 			selectedQuestions = selectedQuestions.concat(_.sample(level1Questions, 5));			
-			selectedQuestions = selectedQuestions.concat(_.sample(level3Questions, 5));			
-			selectedQuestions = selectedQuestions.concat(_.sample(level4Questions, 4));			
+			selectedQuestions = selectedQuestions.concat(_.sample(level2Questions, 4));			
+			selectedQuestions = selectedQuestions.concat(_.sample(level3Questions, 3));			
+			selectedQuestions = selectedQuestions.concat(_.sample(level4Questions, 2));			
 			selectedQuestions = selectedQuestions.concat(_.sample(level5Questions, 2));			
 
 			console.log(selectedQuestions);
