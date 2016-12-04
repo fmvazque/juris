@@ -29,7 +29,7 @@
 		loadQuestionsFromJson(initializeQuestions);
 
 		function loadQuestionsFromJson(callback) {   
-			$http.get("js/testquestions.json")
+			$http.get("js/questions.json")
 			.success(function(data) {
 				callback(data);
 			})
