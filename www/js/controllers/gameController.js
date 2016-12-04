@@ -11,10 +11,16 @@
 			startGameController();
 		});
 
-		$scope.goToNextQuestion = function() {
-			console.log('gameController::goToNextQuestion called');
-			
-			var gameStatus = gameApi.advance($scope.selectedOption.value);
+		$scope.getRemainingSkips = function() {
+			return gameApi.getCurrentStatus().remainingSkips;
+		} 
+
+		$scope.isFinalQuestion = function() {
+			return gameApi.getCurrentStatus().isFinalQuestion;
+		} 
+
+		$scope.goToNextQuestion = function(userSkipped) {
+			var gameStatus = gameApi.advance($scope.selectedOption.value, userSkipped);
 
 			if (gameStatus.hasWinner) {
 				console.log('game has winner')
@@ -37,6 +43,15 @@
 			}
 		};
 
+		$scope.skipQuestion = function() {
+			$scope.goToNextQuestion(true);
+		};
+
+		$scope.stopGame = function() {
+			gameApi.stopGame();
+			$state.go('home.gameover');
+		};
+
 		function startGameController() {
 			var gameStatus = gameApi.getCurrentStatus();
 
@@ -51,7 +66,7 @@
 			$scope.currentScore = gameStatus.currentScore;			
 		};
 
-		// Confirmation dialog
+		// Question confirmation dialog
 		$scope.showConfirm = function() {
 			var confirmPopup = $ionicPopup.confirm({
 				title: 'Você está certo(a) disso?',
@@ -68,6 +83,70 @@
 						type: 'button-positive'
 					}]				
 			});
+		};
+
+		// Stop game confirmation dialog
+		$scope.showStopConfirmation = function() {
+			var confirmPopup = $ionicPopup.confirm({
+				title: 'Você realmente deseja parar?',
+				buttons: [
+					{
+						text: 'Sim', 
+						type: 'button-positive',
+						onTap: function(e) {
+								$scope.stopGame();
+							}						
+					},
+					{
+						text: '<b>Não</b>',
+						type: 'button-positive'
+					}]				
+			});
 		};		
+
+		// Skip question confirmation dialog
+		$scope.showSkipConfirmation = function() {
+			if ($scope.isFinalQuestion()) {
+				$ionicPopup.show({
+					template: '<h2>Você não pude pular a pergunta do Milhão!</h2>',
+					scope: $scope,
+					buttons: [
+						{ text: 'Ok' },
+					]
+				});
+				return;
+			}
+
+			if ($scope.getRemainingSkips() == 0) {
+				$ionicPopup.show({
+					template: '<h2>Você não tem mais pulos disponíveis!</h2>',
+					title: 'Todos os pulos já foram usados',
+					scope: $scope,
+					buttons: [
+						{ text: 'Ok' },
+					]
+				});
+				return;
+			}
+
+			var dialogText = "Você tem " + $scope.getRemainingSkips() + " pulos disponíveis."
+
+			var myPopup = $ionicPopup.show({
+				template: '<h2>' + dialogText + '</h2>',
+				title: 'Confirma que deseja pular questão?',
+				scope: $scope,
+				buttons: [
+				{ text: 'Cancelar' },
+				{
+					text: '<b>Sim</b>',
+					type: 'button-positive',
+					onTap: function(e) {
+						$scope.skipQuestion();
+					}
+				}
+				]
+			});
+		}		
+				
 	}
 })();

@@ -4,7 +4,8 @@
 			<div class="card item-text-wrap">
 				
 				<div class="item item-body">
-					<h2>VOCÊ GANHOU {{currentScore | currency}} EM HONORÁRIOS ADVOCATÍCIOS</h2>
+					<h1 ng-if="!hasUserSkippedLastQuestion()">Resposta Certa!</h1>
+					<h1 ng-if="hasUserSkippedLastQuestion()">Você pulou a questão</h1>
 
 					<h3>Próxima pergunta valendo: 
 						<h2>

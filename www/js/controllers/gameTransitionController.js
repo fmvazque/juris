@@ -9,6 +9,11 @@
 
 		$scope.currentScore = gameApi.getCurrentStatus().currentScore; 
 		$scope.scoreIfRight = gameApi.getCurrentStatus().scoreIfRight; 
+		
+		$scope.hasUserSkippedLastQuestion = function() {
+			console.log(gameApi.getCurrentStatus().userHasSkippedLastQuestion)
+			return gameApi.getCurrentStatus().userHasSkippedLastQuestion;
+		}
 
 		$scope.$on('$ionicView.enter', function() {
 			$timeout(function() {

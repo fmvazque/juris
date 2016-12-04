@@ -11,6 +11,9 @@
 		var isGameOver = false;
 		var selectedSubject = "";
 		var selectedQuestions = [];
+		var userHasSkippedLastQuestion = false;
+		var remainingSkips = 3;
+		var isFinalQuestion = false;
 
 		var gameData = {
 			gameLevel: 1,
@@ -26,7 +29,7 @@
 		loadQuestionsFromJson(initializeQuestions);
 
 		function loadQuestionsFromJson(callback) {   
-			$http.get("js/questions.json")
+			$http.get("js/testquestions.json")
 			.success(function(data) {
 				callback(data);
 			})
@@ -42,8 +45,6 @@
 			for (var i = 0; i < questions.length; i++) {
 				var questionFrom = questions[i];
 
-				console.log(questionFrom);
-				
 				var questionTo = {
 					subject: questionFrom.subject,
 					text: questionFrom.text,
@@ -57,8 +58,6 @@
 				questionTo.alternatives.push(questionFrom.answer2);
 				questionTo.alternatives.push(questionFrom.answer3);
 				questionTo.alternatives.push(questionFrom.answer4);
-
-				console.log(questionTo);
 
 				gameData.questions.push(questionTo);
 			}				
@@ -74,17 +73,23 @@
 		}
 
 		// Advance game
-		function advance(userAnswer) {
+		function advance(userAnswer, userSkipped) {
 			console.log('advancing game');
 
 			var currentQuestion = selectedQuestions[currentQuestionIndex];
+			userHasSkippedLastQuestion = userSkipped;
 
-			if (currentQuestion && userAnswer === currentQuestion.alternatives[currentQuestion.correctAnswerIndex]) {
-				recalculateScores();
+			if (userSkipped) {
+				remainingSkips--;
+				findNextQuestionIndex();
+			} 
+			else if (currentQuestion && userAnswer === currentQuestion.alternatives[currentQuestion.correctAnswerIndex]) {
+				recalculateScores(true);
 				findNextQuestionIndex();
 			}
-			else 
-				isGameOver = currentQuestionIndex >= 0;
+			else {
+				recalculateScores(false);
+			}
 			
 			return getCurrentStatus();
 		}
@@ -117,6 +122,8 @@
 			currentScore = 0;
 			scoreIfRight = 1000;
 			scoreIfWrong = 0;
+			remainingSkips = 3;
+			isFinalQuestion = false;
 
 			// select the questions by the subject chosen by the user
 			var level1Questions = _.filter(gameData.questions, function(q) {
@@ -141,13 +148,25 @@
 			selectedQuestions = selectedQuestions.concat(_.sample(level4Questions, 4));			
 			selectedQuestions = selectedQuestions.concat(_.sample(level5Questions, 2));			
 
+			console.log(selectedQuestions);
+
 			findNextQuestionIndex();
 		}
 
-		function recalculateScores() {
-			currentScore = scoreIfRight;
+		function stopGame() {
+			isGameOver = true;
+			console.log("current score when user stopped game: " + currentScore);
+		}
+
+		function recalculateScores(userGotItRight) {
+			if (userGotItRight)
+				currentScore = scoreIfRight;
+			else {
+				currentScore = scoreIfWrong;
+				isGameOver = currentQuestionIndex >= 0;
+			}
 			
-			// Calculate new score if right and new score if wrong
+			// Calculate new scores 
 			if (scoreIfRight < 5000) {
 				scoreIfRight += 1000;	
 			}
@@ -172,6 +191,7 @@
 				scoreIfWrong = currentScore / 2;
 			}
 			else {
+				isFinalQuestion = true;
 				scoreIfWrong = 0;
 			}
 		}
@@ -200,13 +220,17 @@
 				currentQuestion: selectedQuestions[currentQuestionIndex],
 				currentScore: currentScore,
 				scoreIfWrong: scoreIfWrong,
-				scoreIfRight: scoreIfRight
+				scoreIfRight: scoreIfRight,
+				remainingSkips: remainingSkips,
+				isFinalQuestion : isFinalQuestion,
+				userHasSkippedLastQuestion : userHasSkippedLastQuestion
 			}
 		}
 
 		return {
 			newGame : newGame,
 			advance : advance,
+			stopGame : stopGame,
 			getSubjects: getSubjects,
 			setSubject: setSubject,
 			getSelectedSubject: getSelectedSubject,

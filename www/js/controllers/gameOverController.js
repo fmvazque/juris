@@ -19,9 +19,5 @@
 		$scope.currentScore = function() {
 			return gameApi.getCurrentStatus().currentScore;
 		}
-
-		$scope.scoreIfWrong = function() {
-			return gameApi.getCurrentStatus().scoreIfWrong;
-		}
 	}
 })();
