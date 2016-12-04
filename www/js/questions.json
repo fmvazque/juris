@@ -1604,5 +1604,38 @@
     "right_answer": 2,
     "difficulty": 5,
     "": ""
+  },  
+  {
+    "subject": "Introdução ao direito",
+    "text": "O deputado Marcos Feliciano ocupou grandes espaços na mídia, especialmente ao longo do primeiro semestre de 2013. Tal fato pode ser explicado pelas posições polêmicas defendidas pelo deputado que ocupa a presidência da Comissão",
+    "answer1": "de Educação.",
+    "answer2": "de Seguridade Social e Família.",
+    "answer3": "de Direitos Humanos e Minorias.",
+    "answer4": "do Direito do Consumidor.",
+    "right_answer": 3,
+    "difficulty": 1,
+    "": ""
+  },  
+  {
+    "subject": "Introdução ao direito",
+    "text": "Assinale a alternativa CORRETA.",
+    "answer1": "Uma vez empregado, o beneficiário da Bolsa Família perde o direito a esse benefício.",
+    "answer2": "Cabe ao Ministério Público requisitar diligências investigatórias apenas para instruir apuração de natureza criminal. ",
+    "answer3": "O Promotor de Justiça é um agente político e no exercício de seus deveres funcionais acha-se subordinado às recomendações emanadas do Conselho Superior da Instituição, independente da prerrogativa de independência funcional do membro do Ministério Público.",
+    "answer4": "As funções institucionais do Ministério Público elencadas no artigo 129 da Constituição Federal de 1988 não têm rol taxativo, pois permitem o exercício de outras funções compatíveis com a finalidade da Instituição.",
+    "right_answer": 4,
+    "difficulty": 5,
+    "": ""
+  },
+  {
+    "subject": "Introdução ao direito",
+    "text": "A propaganda eleitoral",
+    "answer1": "através da utilização de trios elétricos é vedada para a sonorização de comícios.",
+    "answer2": "através de outdoors submete-se a prévio sorteio de local a ser feito pela Justiça Eleitoral.",
+    "answer3": "através da distribuição de material gráfico, caminhada, carreata, passeata ou carro de som que transite pela cidade divulgando jingles ou mensagens de candidatos é permitida até às 22 horas do dia que antecede a eleição.",
+    "answer4": "é absolutamente vedada no dia da eleição, não podendo o eleitor utilizar broches e adesivos.",
+    "right_answer": 3,
+    "difficulty": 5,
+    "": ""
   }  
 ]
